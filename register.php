@@ -33,7 +33,7 @@ session_start();
         У вас уже есть аккаунт? - <a href="/index.php">Войти</a>
     </p>
     <?php
-        if ($_SESSION['message']) {
+        if (array_key_exists('message', $_SESSION)) {
             echo '<p class="msg">'.$_SESSION['message'].'</p>';
         }
         unset ($_SESSION['message']);

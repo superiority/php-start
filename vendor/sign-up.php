@@ -10,6 +10,18 @@ $password = $_POST['password'];
 $password_confirm = $_POST['password_confirm'];
 
 if ($password === $password_confirm) {
+    $path = 'uploads/' . time() . $_FILES['avatar']['name'];
+
+    if (!move_uploaded_file($_FILES['avatar']['tmp_name'], '../' . $path)) {
+        $_SESSION['message'] = 'Ошибка при загрузке';
+        header('Location: ../register.php');
+    }
+
+    $password = md5($password);
+
+    mysqli_query($connect, "INSERT INTO `users` (`id`, `full_name`, `login`, `email`, `password`, `avatar`) VALUES ('$full_name', '$login', '$email', '$password', '$password_confirm', '$path')");
+
+
 
 } else {
     $_SESSION['message'] = 'Пароли не совпадают';
