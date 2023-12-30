@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (isset($_SESSION['user']) && $_SESSION['user']) {
+    header('Location: profile.php');
+}
+
 ?>
 
 <!doctype html>
@@ -28,15 +33,15 @@ session_start();
     <label for="">Подтверждение пароля</label>
     <input type="password" name="password_confirm" placeholder="Подтвердите пароль">
 
-    <button>Войти</button>
+    <button type="submit">Войти</button>
     <p>
         У вас уже есть аккаунт? - <a href="/index.php">Войти</a>
     </p>
     <?php
-        if (array_key_exists('message', $_SESSION)) {
-            echo '<p class="msg">'.$_SESSION['message'].'</p>';
-        }
-        unset ($_SESSION['message']);
+    if (array_key_exists('message', $_SESSION)) {
+        echo '<p class="msg">' . $_SESSION['message'] . '</p>';
+    }
+    unset ($_SESSION['message']);
     ?>
 
 

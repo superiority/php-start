@@ -49,3 +49,12 @@ button {
     text-align: center;
     font-weight: bold;
 }
+
+.avatar {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.logout {
+    color: #a11111;
+}
